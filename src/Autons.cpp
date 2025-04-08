@@ -177,32 +177,32 @@ void Red4Ring(){
 }
 
 void Blue4Ring(){
-    chassis.setPose(54.837, 12.223, 180);
+    // chassis.setPose(54.837, 12.223, 180);
 
 
-    //Alliance Stake scoring 
-    chassis.swingToPoint(18,17, DriveSide::LEFT, 1800,{.forwards = false,.maxSpeed = 90});
-     delay(700);
-    target = states[2];
-    delay(600);
-    target = states[0];
-    chassis.moveToPose(24.484,23.011,90, 1500, {.forwards = false,.horizontalDrift = 8, .lead = 0.4,.maxSpeed = 100 });
-    delay(1100);
+    // //Alliance Stake scoring 
+    // chassis.swingToPoint(18,17, DriveSide::LEFT, 1800,{.forwards = false,.maxSpeed = 90});
+    //  delay(700);
+    // target = states[2];
+    // delay(600);
+    // target = states[0];
+    // chassis.moveToPose(24.484,23.011,90, 1500, {.forwards = false,.horizontalDrift = 8, .lead = 0.4,.maxSpeed = 100 });
+    // delay(1100);
     Clamp.set_value(HIGH);
  pros::Task intake(BintakeTask);
  preroller.move(127);
  hooks.move(127);
- chassis.turnToHeading(-50,1000);
- chassis.moveToPose(15,60,0,2000, {.horizontalDrift = 8, .lead = 0.4,.maxSpeed = 80 });
- chassis.turnToHeading(90,1000);
- chassis.moveToPoint(30.024,41.082, 2000, {.maxSpeed = 100},false);
- target = states[2];
-    chassis.moveToPoint(20,18, 2000, {.maxSpeed = 80});
-//  chassis.turnToHeading(45,500);
-//  delay(650);
-//  Doinker.set_value(HIGH);
-//  moveRelative(4,80,1000);
-//  chassis.turnToHeading(-45, 1000,{.maxSpeed = 80});
+//  chassis.turnToHeading(-50,1000);
+//  chassis.moveToPose(15,60,0,2000, {.horizontalDrift = 8, .lead = 0.4,.maxSpeed = 80 });
+//  chassis.turnToHeading(90,1000);
+//  chassis.moveToPoint(30.024,41.082, 2000, {.maxSpeed = 100},false);
+//  target = states[2];
+//     chassis.moveToPoint(20,18, 2000, {.maxSpeed = 80});
+// //  chassis.turnToHeading(45,500);
+// //  delay(650);
+// //  Doinker.set_value(HIGH);
+// //  moveRelative(4,80,1000);
+// //  chassis.turnToHeading(-45, 1000,{.maxSpeed = 80});
 }
 
 void RedGoalRush(){

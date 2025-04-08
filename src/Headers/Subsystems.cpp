@@ -9,16 +9,17 @@ static bool Rushtoggle{false};
 static bool Doinkertoggle{false};
 int startTime;
 bool isJamHandled = true;
+bool colorSortON = true;
 
-void ColorSortControl(){
-if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)){
-  colorSortON = true;
-} else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
-  colorSortON = false;
-}
+// void ColorSortControl(){
+// if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)){
+//   colorSortON = true;
+// } else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) {
+//   colorSortON = false;
+// }
 
 
-}
+// }
 void setIntakes() {
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
       hooks.move_velocity(600);

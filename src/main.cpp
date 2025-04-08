@@ -55,11 +55,11 @@ void competition_initialize() {
 
 
 void autonomous() {
-	console.println("Running auton...");
-	console.focus();
-	Match_autos.run_auton();
+	// console.println("Running auton...");
+	// console.focus();
+	// Match_autos.run_auton();
 	// skills();
-	// Blue4Ring();
+	Blue4Ring();
 	//RingRushBlue();
 	//  BluePosWP();
 	// BlueGoalRush();
@@ -69,6 +69,7 @@ void autonomous() {
 void opcontrol() {
 	  // controller
     // loop to continuously update motors
+	
     while (true) {
 
 
@@ -83,7 +84,7 @@ void opcontrol() {
 		setClamp();
 		setDoinker();
 		setLB();
-
+		// pros::Task intake(BintakeTask);
         // delay to save resources
         pros::delay(10);
     }

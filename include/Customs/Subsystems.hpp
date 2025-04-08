@@ -6,4 +6,3 @@ void setDoinker();
 void setRush();
 void setLB();
 void controlIntake();
-void ColorSortControl();
