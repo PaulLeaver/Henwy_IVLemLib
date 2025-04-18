@@ -17,13 +17,14 @@ void LBTask() {
 // bool colorSortON = true;
 void BintakeTask() {
     uint32_t lastCheckTime = pros::millis();
-    sorter.set_integration_time(20);
+    sorter.set_integration_time(10);
     sorter.set_led_pwm(100);
     while (true) {
         // Run the intake motor
         int hue = sorter.get_hue();
+        int distance = distsort.get_distance();
         // if(proximity < 100){
-        if (((hue >= 0 && hue <= 38) || hue >= 340 )) {
+        if (((hue >= 0 && hue <= 38) || hue >= 340 ) ) {
             // Reverse the intake motor if the color matches
             pros::delay(65);
             hooks.move_velocity(-600);
@@ -55,7 +56,7 @@ void BintakeTask() {
 
 void RintakeTask() {
     uint32_t lastCheckTime = pros::millis();
-    sorter.set_integration_time(20);
+    sorter.set_integration_time(10);
     sorter.set_led_pwm(100);
     while (true) {
         // Run the intake motors

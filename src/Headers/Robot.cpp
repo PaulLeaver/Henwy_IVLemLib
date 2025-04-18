@@ -31,6 +31,7 @@ adi::Pneumatics Doinker('b', LOW);
 
 //optical sensor for color sort in port 9
 Optical sorter(9);
+Distance distsort(17);
 
 // tracking wheels
 // horizontal tracking wheel encoder. Rotation sensor, port 5, not reversed

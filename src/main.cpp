@@ -6,10 +6,6 @@ rd::Selector Match_autos({
 	{"Blue Solo Winpoint", &BluePosWP},
 	{"Red five ring", &Red4Ring},
 	{"Blue five ring", &Blue4Ring},
-	{"Red Goal rush", &RedGoalRush},
-	{"Blue Goal rush", &BlueGoalRush},
-	{"Red Ring Rush", &RingRushRed},
-	{"Blue Ring Rush", &RingRushBlue},
 	{"Skills", &skills},
 	{"Drive Forward", &DriveForward},
 });
@@ -21,12 +17,12 @@ rd::Selector Match_autos({
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
-	Match_autos.focus();
+	// Match_autos.focus();
 	console.println("Initializing robot...");
 	preroller.set_encoder_units(E_MOTOR_ENCODER_DEGREES);
 	hooks.set_encoder_units(E_MOTOR_ENCODER_DEGREES);
 	chassis.calibrate(); // calibrate sensors
-	sorter.disable_gesture();
+	// sorter.disable_gesture();
 	pros::Task liftControlTask(LBTask, "LB Task");
 	pros::Task screenTask([&]() {
         lemlib::Pose pose(0, 0, 0);
@@ -35,7 +31,8 @@ void initialize() {
             console.printf("X: %f", chassis.getPose().x); // x
             console.printf("Y: %f", chassis.getPose().y); // y
             console.printf("Theta: %f", chassis.getPose().theta); // heading
-			console.printf("\nprox: ", (float)sorter.get_proximity());
+			// console.printf("distance: %f", sorter.get_proximity()); // heading
+			// console.printf("color: %f", sorter.get_hue());
             // delay to save resources
             pros::delay(50);
 			console.clear();
@@ -53,39 +50,18 @@ void competition_initialize() {
 
 }
 
-
+static bool firstauto = true;
 void autonomous() {
-	// console.println("Running auton...");
-	// console.focus();
-	// Match_autos.run_auton();
-	// skills();
-	Blue4Ring();
-	//RingRushBlue();
-	//  BluePosWP();
-	// BlueGoalRush();
+	if (firstauto){
+		firstauto = false;
+		RedPosWP();
+	  }
+	  else{
+		Action_Period();
+	  }
 }
 
 
 void opcontrol() {
-	  // controller
-    // loop to continuously update motors
-	
-    while (true) {
 
-
-        // get joystick positions
-        int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-        int rightY = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
-        // move the chassis with curvature drive
-        chassis.tank(leftY, rightY);
-		
-		controlIntake();
-		setIntakes();
-		setClamp();
-		setDoinker();
-		setLB();
-		// pros::Task intake(BintakeTask);
-        // delay to save resources
-        pros::delay(10);
-    }
 }

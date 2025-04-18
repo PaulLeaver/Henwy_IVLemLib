@@ -24,6 +24,8 @@ extern Motor LB;
 
 extern Imu imu;
 extern Optical sorter;
+extern Distance distsort;
+
 
 extern adi::Pneumatics Clamp;
 extern adi::Pneumatics Rushmech;
