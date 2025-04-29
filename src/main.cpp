@@ -55,6 +55,8 @@ void autonomous() {
 	if (firstauto){
 		firstauto = false;
 		RedPosWP();
+		// BluePosWP();
+		// skills();
 	  }
 	  else{
 		Action_Period();
@@ -63,5 +65,5 @@ void autonomous() {
 
 
 void opcontrol() {
-
+	Action_Period();
 }
