@@ -23,7 +23,6 @@ void initialize() {
 	hooks.set_encoder_units(E_MOTOR_ENCODER_DEGREES);
 	chassis.calibrate(); // calibrate sensors
 	// sorter.disable_gesture();
-	pros::Task liftControlTask(LBTask, "LB Task");
 	pros::Task screenTask([&]() {
         lemlib::Pose pose(0, 0, 0);
         while (true) {

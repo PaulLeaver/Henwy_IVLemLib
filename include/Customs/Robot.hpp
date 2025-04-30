@@ -20,16 +20,15 @@ extern MotorGroup driveRight;
 extern Motor hooks;
 extern Motor preroller;
 extern MotorGroup intake;
-extern Motor LB;
+extern Motor Linear1;
+extern Motor Linear2;
+extern MotorGroup LinearSlide;
 
 extern Imu imu;
 extern Optical sorter;
-extern Distance distsort;
 
 
 extern adi::Pneumatics Clamp;
-extern adi::Pneumatics Rushmech;
-extern adi::Pneumatics Doinker;
 
 extern Drivetrain drivetrain;
 

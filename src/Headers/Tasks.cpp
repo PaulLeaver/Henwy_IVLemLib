@@ -7,13 +7,6 @@
 //     console.printf("The robot's y position is %f\n", chassis.getPose().y);
 //     pros::delay(50);
 // }
-
-void LBTask() {
-    while (true) {
-        liftControl();
-        pros::delay(10);
-    }
-}
 // bool colorSortON = true;
 void BintakeTask() {
     uint32_t lastCheckTime = pros::millis();
@@ -22,7 +15,6 @@ void BintakeTask() {
     while (true) {
         // Run the intake motor
         int hue = sorter.get_hue();
-        int distance = distsort.get_distance();
         // if(proximity < 100){
         if (((hue >= 0 && hue <= 38) || hue >= 340 ) ) {
             // Reverse the intake motor if the color matches
@@ -37,7 +29,7 @@ void BintakeTask() {
         // Check if a certain amount of time has passed since the last speed check
         if (pros::millis() - lastCheckTime >= 300) { // Check every 300 ms
             // Check if the hook motor is going too slow
-            if (hooks.get_actual_velocity() < 75 && currState != 1) {
+            if (hooks.get_actual_velocity() < 75 ) {
                 // Reverse the hook motor if it is going too slow
                 hooks.move_velocity(-600);
                 pros::delay(150); // Delay to allow the motor to reverse
@@ -74,7 +66,7 @@ void RintakeTask() {
         // Check if a certain amount of time has passed since the last speed check
         if (pros::millis() - lastCheckTime >= 300) { // Check every 300 ms
             // Check if the hook motor is going too slow
-            if (hooks.get_actual_velocity() < 75 && currState != 1) {
+            if (hooks.get_actual_velocity() < 75 ) {
                 // Reverse the hook motor if it is going too slow
                 hooks.move_velocity(-600);
                 pros::delay(150); // Delay to allow the motor to reverse

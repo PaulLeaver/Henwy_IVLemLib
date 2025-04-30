@@ -41,7 +41,7 @@ void setIntakes() {
     // When R1 is pressed, run the intake forward
     if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) {
         // If the motor is powered but hasn't moved within the first 500ms, reverse briefly
-        if (currentIntakeVelocity == 0 && !isJamHandled && pros::millis() - startTime > 300  && currState != 1){
+        if (currentIntakeVelocity == 0 && !isJamHandled && pros::millis() - startTime > 300 ){
             // Reverse the motor briefly to un-jam
             hooks.move(-127);
             preroller.move(-127);
@@ -79,43 +79,3 @@ void setClamp() {
     }
   }
 }
-
-
-void setRush() {
-  if (controller.get_digital_new_press(E_CONTROLLER_DIGITAL_LEFT)) {
-    if (!Rushtoggle) {
-      Rushmech.set_value(true);
-      Rushtoggle = !Rushtoggle;
-    } else {
-      Rushmech.set_value(false);
-      Rushtoggle = !Rushtoggle;
-    }
-  }
-}
-
-void setDoinker() {
-  if (controller.get_digital_new_press(E_CONTROLLER_DIGITAL_RIGHT)) {
-    if (!Doinkertoggle) {
-      Doinker.set_value(true);
-      Doinkertoggle = !Doinkertoggle;
-    } else {
-      Doinker.set_value(false);
-      Doinkertoggle = !Doinkertoggle;
-    }
-  }
-}
-
-
-
-void setLB(){
-  if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) {
-    nextState();
-  } else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
-    currState = 2;
-    target = states[currState];
-  } else if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) {
-    currState = 1;
-    target = states[currState];
-  }
-}
-

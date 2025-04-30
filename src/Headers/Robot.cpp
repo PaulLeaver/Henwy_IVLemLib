@@ -17,21 +17,20 @@ Controller controller(E_CONTROLLER_MASTER);
 pros::MotorGroup leftMotors({-7,6, -8}, pros::MotorGearset::blue); // left side motors in ports 6,7,8
 pros::MotorGroup rightMotors({14, -15, 18}, pros::MotorGearset::blue); // right side motors in ports 14,15,18
 
-Motor LB(10, pros::MotorGearset::green); // arm motor on port 10
+Motor Linear1(10, pros::MotorGearset::green); // arm motor on port 10
+Motor Linear2(-12, pros::MotorGearset::green);
 Motor hooks(-11, pros::MotorGearset::blue); // right intake motor on port 11
-Motor preroller(-20, pros::MotorGearset::green); // right intake motor on port 20
+Motor preroller(-20, pros::MotorGearset::blue); // right intake motor on port 20
 MotorGroup intake({-11, -20}, pros::MotorGearset::blue); // intake motors on ports 11,20
+MotorGroup LinearSlide({10, -12}, pros::MotorGearset::blue);
 
 // Inertial Sensor on port 1
 pros::Imu imu(1);
 
 adi::Pneumatics Clamp('e', LOW);
-adi::Pneumatics Rushmech('c', LOW);
-adi::Pneumatics Doinker('b', LOW);
 
 //optical sensor for color sort in port 9
 Optical sorter(9);
-Distance distsort(17);
 
 // tracking wheels
 // horizontal tracking wheel encoder. Rotation sensor, port 5, not reversed
@@ -47,9 +46,9 @@ lemlib::TrackingWheel vertical(&verticalEnc, lemlib::Omniwheel::NEW_2, 1);
 lemlib::Drivetrain drivetrain(&leftMotors, // left motor group
                               &rightMotors, // right motor group
                               13, // 13 inch track width
-                              lemlib::Omniwheel::NEW_275, // using new 4" omnis
-                              600, // drivetrain rpm is 600
-                              8 // horizontal drift is 2. If we had traction wheels, it would have been 8
+                              lemlib::Omniwheel::NEW_325, // using new 4" omnis
+                              465, // drivetrain rpm is 600
+                              2 // horizontal drift is 2. If we had traction wheels, it would have been 8
 );
 
 // sensors for odometry
