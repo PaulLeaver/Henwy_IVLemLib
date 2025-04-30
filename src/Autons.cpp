@@ -3,13 +3,6 @@
 #include "pros/adi.h"
 #include "pros/rtos.hpp"
 
-ASSET(Ring4_txt)
-ASSET(Ring4Blue_txt)
-
-float defaultMaxSpeed = 6;
-int defaultTimeout = 3000;
-
-
 
 void moveRelative(float distance, float maxSpeed, int timeout) {
     double headingRadians = chassis.getPose(true).theta;
@@ -30,77 +23,16 @@ void moveRelative(float distance, float maxSpeed, int timeout) {
 
 
 void RedPosWP(){
-    chassis.setPose(-48.903, 31.642, 75);
-    Doinker.set_value(HIGH);
-    moveRelative(33,127,950);
-    delay(950);
-    Doinker.set_value(LOW);
-    moveRelative(-12,127,2000);
-    delay(1000);
-    Doinker.set_value(HIGH);
-    chassis.moveToPose(-45,6,0, 1800, {.forwards = false,.horizontalDrift = 8, .lead = 0.4,.maxSpeed = 100 },false );
-    Clamp.set_value(HIGH);
-    pros::Task intake(RintakeTask);
-    preroller.move(127);
-    hooks.move(127);
-    chassis.moveToPoint(-47.825,48.094, 1500, {.maxSpeed = 80},false);
-    chassis.turnToHeading(-55, 1000);
-    chassis.moveToPoint(-56,57, 1500, {.maxSpeed = 80},false);
-    // chassis.moveToPose(-58 ,53,-45, 1500, {.maxSpeed = 100},false);
-    chassis.moveToPoint(-20,47.016, 1500, {.maxSpeed = 100});
-    delay(950);
-    Doinker.set_value(LOW);
-    chassis.moveToPose(-59,25,180, 2000, {.forwards = false,.horizontalDrift = 8, .lead = 0.4,.maxSpeed = 100 },false );
-    chassis.moveToPoint(-58.613,-45, 2400, {.maxSpeed = 100});
-    chassis.turnToHeading(45, 2000);
-    delay(1000);
-    Clamp.set_value(LOW);
-    chassis.moveToPoint(-60.231,-60.328, 2400, {.forwards = false,.maxSpeed = 100});
-
+   
 
 }
 
 void BluePosWP(){
-    chassis.setPose(48.903, 31.642, 285);
-    Rushmech.set_value(HIGH);
-    moveRelative(33,127,950);
-    delay(950);
-    Rushmech.set_value(LOW);
-    moveRelative(-12,127,2000);
-    delay(1000);
-    Rushmech.set_value(HIGH);
-    chassis.moveToPose(45,0,0, 2200, {.forwards = false,.horizontalDrift = 8, .lead = 0.4,.maxSpeed = 100 },false );
-    Clamp.set_value(HIGH);
-    pros::Task intake(BintakeTask);
-    preroller.move(127);
-    hooks.move(127);
-    chassis.moveToPoint(47.825,48.094, 1500, {.maxSpeed = 80},false);
-    chassis.turnToHeading(55, 1000);
-    chassis.moveToPoint(56,57, 1500, {.maxSpeed = 80},false);
-    // chassis.moveToPose(-58 ,53,-45, 1500, {.maxSpeed = 100},false);
-    chassis.moveToPoint(22.742,47.016, 1500, {.maxSpeed = 100});
-    delay(950);
-    Rushmech.set_value(LOW);
-    chassis.moveToPose(59,25,180, 2000, {.forwards = false,.horizontalDrift = 8, .lead = 0.4,.maxSpeed = 100 },false );
-    chassis.moveToPoint(58.613,-45, 2400, {.maxSpeed = 100});
-    chassis.turnToHeading(45, 2000);
-    delay(1000);
-    Clamp.set_value(LOW);
-    chassis.moveToPoint(60.231,-60.328, 2400, {.forwards = false,.maxSpeed = 100});
     
 }
 
 
 void Red4Ring(){
-    chassis.setPose(-48.903, 31.642, 75);
-    Doinker.set_value(HIGH);
-    moveRelative(33,127,950);
-    delay(950);
-    Doinker.set_value(LOW);
-    moveRelative(-12,127,2000);
-    delay(1000);
-    Doinker.set_value(HIGH);
-    
 }
 
 void Blue4Ring(){
@@ -143,7 +75,7 @@ void skills(){
     chassis.turnToHeading(0, 500);
     chassis.moveToPoint(23.581,24.832, 1500, {.forwards = false,.maxSpeed = 80},false);
     Clamp.set_value(HIGH);
-    intake.Resume();
+    // intake.Resume();
     hooks.move(127);
     chassis.moveToPoint(47.382, 23.821, 1000, {.maxSpeed = 80});
     chassis.moveToPoint(46.573, 47.016, 1000, {.maxSpeed = 80});
